@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CGPA Calculator</title>
+	<style>
+	body{margin:0;}
+	table, th , td {
+	  border: 1px solid grey;
+	  border-collapse: collapse;
+	  padding: 5px;
+	}
+	table tr:nth-child(odd) {
+	  background-color: #f1f1f1;
+	}
+	table tr:nth-child(even) {
+	  background-color: #ffffff;
+	}
+	.wrapper
+	 {
+    text-align: center;
+     }
+
+.button {
+    position: absolute;
+    top: 50%;
+    }
+</style> 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="calc.js"></script>		
+</head>
+<body style="background-color: #cce6ff">
+	<div style="overflow:hidden;border: 2px solid white;background-color: blue">
+	<h1 style="color:white;text-align: center;font-family: comic">CGPA Calculator</h1>
+	</div>
+	<br/><br/>
+	<div ng-app="Calc" ng-controller="MyCtrl">
+		<form ng-submit="tableAdd()">
+	        <table align="center">
+				<tr>
+				<th>SGPA</th>
+				<th>Credit points</th>
+				</tr>
+				<tr ng-repeat="sg in scores">
+				<td><input type="text" ng-model="sg.sgpa"></td>
+				<td><input type="text" ng-model="sg.cp"></td>
+				<th><input type="submit" value="Add New"></th>
+				</tr>
+			</table>
+			<div class="wrapper">
+				<p><button class="button" ng-click="calculate()">Calculate</button></p>
+				<h2 ng-if="showcgpa">CGPA: {{cgpa| number : 2}}</h2>
+			</div>	
+	</div>
+	
+</body>
+</html>
